@@ -1,16 +1,38 @@
-var app = angular.module('queue',
-    [
+/**
+ * Created by Arek on 2015-06-30.
+ */
 
-    ]);
-app.config(['$stateProvider','$urlRouterProvider', function($stateProvider, $urlRouterProvider){
-    $urlRouterProvider.otherwise('index');
+var app = angular.module('queue', []);
 
-    $stateProvider.state('index', {
-        url: '/',
-        templateUrl: 'index.html'
-    });
-    $stateProvider.state('test', {
-        url: '/test',
-        templateUrl: 'html/test.html'
-    });
+app.controller('QueueController', ['$scope', '$http', function($scope, $http) {
+    $scope.operationSuccess = '';
+    $scope.operationError = '';
+
+    $scope.onSuccess = function(response) {
+        $scope.operationSuccess = response;
+    };
+    $scope.onError = function(response) {
+        $scope.operationError = response;
+    };
+    $scope.clearMessages = function() {
+        $scope.operationSuccess = '';
+        $scope.operationError = '';
+    };
+
+    $scope.addQueue = function(){
+        $scope.clearMessages()
+        $http.get('/Queue/addQueue').success(function(response) {
+            $scope.onSuccess(response)
+        }).error(function(response){
+            $scope.onError(response);
+        });
+    };
+    $scope.deleteQueue = function(){
+        $scope.clearMessages();
+        $http.get('/Queue/deleteQueue').success(function(response) {
+            $scope.onSuccess(response);
+        }).error(function(response){
+            $scope.onError(response);
+        });
+    };
 }]);

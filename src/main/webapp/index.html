@@ -1,21 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="queue">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap 101 Template</title>
+    <title>Queue</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body ng-controller="QueueController">
     <script src="js/lib/angular.min.js"></script>
     <script src="js/lib/angular-ui-router.js"></script>
     <script src="js/app.js"></script>
-</head>
-<body>
-
 <!-- Page Content -->
 <div class="container-fluid" style="margin-left:15px;margin-right:15px" >
-    <button class="btn btn-lg btn-danger" ui-sref="test">dupa</button>
-    <div ui-view></div>
+    <div class="alert alert-success" ng-show="operationSuccess.length > 0">
+        {{operationSuccess}}
+    </div>
+    <div class="alert alert-danger" ng-show="operationError.length > 0">
+        {{operationError}}
+    </div>
+
+    <button class="btn btn-lg btn-danger" ng-click="addQueue()">Add queue</button>
+    <button class="btn btn-lg btn-danger" ng-click="deleteQueue()">Delete queue</button>
 </div>
 
 </body>
