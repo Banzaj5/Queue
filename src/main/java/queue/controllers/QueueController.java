@@ -27,7 +27,7 @@ public class QueueController {
         System.out.print("Success");
     }
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
     public String addTask()
     {
 //        try {
@@ -38,6 +38,6 @@ public class QueueController {
 //            e.printStackTrace();
 //        }
         System.out.print("Success");
-        return "index";
+        return "test";
     }
 }
