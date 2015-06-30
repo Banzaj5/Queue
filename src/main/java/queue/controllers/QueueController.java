@@ -6,9 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import queue.services.QueueService;
 
-import java.io.IOException;
-import java.util.concurrent.TimeoutException;
-
 /**
  * Created by Arek on 2015-06-28.
  */
@@ -19,28 +16,28 @@ public class QueueController {
 
     @RequestMapping(value = "/addQueue", method = RequestMethod.GET)
     public void addQueue(ModelMap model) {
-        try {
-            queueService.addQueue("Test");
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (TimeoutException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            queueService.addQueue("Test");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (TimeoutException e) {
+//            e.printStackTrace();
+//        }
         model.addAttribute("message", "Queue has been added");
         System.out.print("Success");
     }
 
-    @RequestMapping(value = "/addTask", method = RequestMethod.GET)
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String addTask()
     {
-        try {
-            queueService.addTask("Test", "1");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            queueService.addTask("Test", "1");
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         System.out.print("Success");
-        return "addTask";
+        return "index";
     }
 }
